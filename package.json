@@ -16,6 +16,7 @@
     "@tanstack/react-router": "^1.170.46",
     "@tanstack/react-router-devtools": "^1.167.2",
     "jotai": "^3.0.1",
+    "jotai-devtools": "^0.15.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "tailwindcss": "^4.3.3"
@@ -31,6 +32,7 @@
     "@vitejs/plugin-react": "^6.1.2",
     "babel-plugin-react-compiler": "^1.0.0",
     "daisyui": "^5.7.50",
+    "jotai-babel": "^0.3.0",
     "oxfmt": "^0.75.0",
     "oxlint": "^1.89.0",
     "typescript": "~7.0.2",
