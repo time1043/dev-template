@@ -1,9 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type Theme = 'light' | 'dark'
 
 export default function ThemeController() {
   const [theme, setTheme] = useState<Theme>('light')
+
+  useEffect(() => {
+    const saved = localStorage.getItem('theme')
+    const initialTheme = saved === 'dark' ? 'dark' : 'light'
+
+    setTheme(initialTheme)
+    document.documentElement.dataset.theme = initialTheme
+  }, [])
 
   function toggleTheme() {
     const nextTheme = theme === 'light' ? 'dark' : 'light'
@@ -12,6 +20,7 @@ export default function ThemeController() {
     // document.documentElement.setAttribute('data-theme', 'dark');
     document.documentElement.dataset.theme = nextTheme
     setTheme(nextTheme)
+    localStorage.setItem('theme', nextTheme)
   }
 
   return (
@@ -21,6 +30,7 @@ export default function ThemeController() {
         type="checkbox"
         className="theme-controller"
         value="synthwave"
+        checked={theme === 'dark'}
         onChange={toggleTheme}
       />
 
