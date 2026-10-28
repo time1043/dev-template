@@ -14,15 +14,23 @@ function Index() {
   const [count, setCount] = useAtom(countAtom)
   const doubleCount = useAtomValue(doubleCountAtom)
 
+  function incrementCount() {
+    setCount((c) => c + 1)
+  }
+
+  function resetCount() {
+    setCount(0)
+  }
+
   return (
     <div>
       <p className="text-3xl font-bold">
         {count} * 2 = {doubleCount}
       </p>
-      <button className="btn" onClick={() => setCount((c) => c + 1)}>
+      <button className="btn" onClick={incrementCount}>
         Increment
       </button>
-      <button className="btn" onClick={() => setCount(0)}>
+      <button className="btn" onClick={resetCount}>
         Reset
       </button>
       <ThemeController />
