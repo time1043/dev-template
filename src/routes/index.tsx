@@ -1,8 +1,13 @@
+import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 
-import ThemeController from './components/theme-controller'
+import ThemeController from '@/components/theme-controller'
 
-export default function App() {
+export const Route = createFileRoute('/')({
+  component: Index,
+})
+
+function Index() {
   const [count, setCount] = useState(0)
   const doubleCount = count * 2
 
