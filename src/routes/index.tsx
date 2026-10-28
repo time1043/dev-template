@@ -22,6 +22,9 @@ function Index() {
       <button className="btn" onClick={() => setCount((c) => c + 1)}>
         Increment
       </button>
+      <button className="btn" onClick={() => setCount(0)}>
+        Reset
+      </button>
       <ThemeController />
     </div>
   )
