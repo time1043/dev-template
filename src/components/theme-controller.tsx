@@ -3,15 +3,13 @@ import { useEffect, useState } from 'react'
 type Theme = 'light' | 'dark'
 
 export default function ThemeController() {
-  const [theme, setTheme] = useState<Theme>('light')
+  const [theme, setTheme] = useState<Theme>(() => {
+    return localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'
+  })
 
   useEffect(() => {
-    const saved = localStorage.getItem('theme')
-    const initialTheme = saved === 'dark' ? 'dark' : 'light'
-
-    setTheme(initialTheme)
-    document.documentElement.dataset.theme = initialTheme
-  }, [])
+    document.documentElement.dataset.theme = theme
+  }, [theme])
 
   function toggleTheme() {
     const nextTheme = theme === 'light' ? 'dark' : 'light'
