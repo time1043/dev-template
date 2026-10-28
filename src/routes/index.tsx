@@ -1,26 +1,19 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useAtom, useAtomValue } from 'jotai'
+import { useAtomValue, useSetAtom } from 'jotai'
 
 import ThemeController from '@/components/theme-controller'
-import { countAtom, doubleCountAtom } from '@/stores/count'
+import { countAtom, doubleCountAtom, incrementCountAtom, resetCountAtom } from '@/stores/count'
 
 export const Route = createFileRoute('/')({
   component: Index,
 })
 
 function Index() {
-  // const count = useAtomValue(countAtom)
-  // const setCount = useSetAtom(countAtom)
-  const [count, setCount] = useAtom(countAtom)
+  const count = useAtomValue(countAtom)
   const doubleCount = useAtomValue(doubleCountAtom)
 
-  function incrementCount() {
-    setCount((c) => c + 1)
-  }
-
-  function resetCount() {
-    setCount(0)
-  }
+  const incrementCount = useSetAtom(incrementCountAtom)
+  const resetCount = useSetAtom(resetCountAtom)
 
   return (
     <div>
